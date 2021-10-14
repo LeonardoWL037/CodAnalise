@@ -120,7 +120,9 @@ public class Usuario {
 	public void setPerfil(int perfil) {
 		this.perfil = perfil;
 	}
-
+	public Usuario() {
+		
+	}
 	public Usuario(long id, @NotNull @NotEmpty String nome, @NotNull @NotEmpty String sobrenome,
 			@NotNull @NotEmpty String cpf, @NotNull @NotEmpty String genero, @NotNull @NotEmpty String senha,
 			@NotNull @NotEmpty String email, String github, String linkedin, @NotNull @NotEmpty int perfil) {
