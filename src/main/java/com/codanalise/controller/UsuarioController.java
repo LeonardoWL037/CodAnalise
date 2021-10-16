@@ -3,7 +3,10 @@ package com.codanalise.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +20,7 @@ import com.codanalise.model.Usuario;
 import com.codanalise.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping(value = "/usuarios")
+@RequestMapping(value = "/usuario")
 public class UsuarioController {
 	
 	@Autowired
@@ -31,15 +34,21 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Usuario> buscausuario(@PathVariable(value = "id") long id) {
+	public ResponseEntity<Usuario> buscausuario(@PathVariable long id) {
+		Optional<Usuario> usuario = usu.findById(id);
 		
+		if(usuario.isPresent()) {
+			
+			return ResponseEntity.ok(usuario.get());
+		}
 		
-		return usu.findById(id);
+		return ResponseEntity.notFound().build();
 		
 	}
 	
 	
 	@PostMapping
+	@Transactional
 	public Usuario salvaUsuario(@RequestBody Usuario usuario) {
 		return usu.save(usuario);
 	}
@@ -54,6 +63,7 @@ public class UsuarioController {
 	
 	
 	@PutMapping()
+	@Transactional
 	public Usuario atualizaUsuario(@RequestBody Usuario usuario) {
 		return usu.save(usuario);
 	}
