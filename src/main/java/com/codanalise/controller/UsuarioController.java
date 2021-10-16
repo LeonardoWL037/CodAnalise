@@ -28,7 +28,7 @@ public class UsuarioController {
 	
 	
 	@GetMapping
-	public List<Usuario> listaUsuarios(String email){
+	public List<Usuario> listaUsuarios(){
 		return usu.findAll();
 		
 	}
