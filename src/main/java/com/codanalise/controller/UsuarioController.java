@@ -28,7 +28,7 @@ public class UsuarioController {
 	
 	
 	@GetMapping
-	public List<Usuario> listaUsuarios(){
+	public List<Usuario> listaUsuarios(String email){
 		return usu.findAll();
 		
 	}
@@ -45,6 +45,17 @@ public class UsuarioController {
 		return ResponseEntity.notFound().build();
 		
 	}
+	
+	@GetMapping("/login/{email}")
+	public ResponseEntity<Usuario> logar(@PathVariable String email ){
+		Optional<Usuario> usuario = usu.findByEmail(email);
+		if(email == null) {
+		 return ResponseEntity.notFound().build();
+		}else {
+			return ResponseEntity.ok(usuario.get());
+		}
+	}
+	
 	
 	
 	@PostMapping

@@ -1,6 +1,7 @@
 package com.codanalise.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +37,11 @@ public class Usuario implements Serializable {
 	@NotNull @NotEmpty
 	private String sobrenome;
 	
-	@NotNull @NotEmpty @Column(unique = true)
-	@Length(min = 11)
-	private String cpf;
+//	@NotNull @NotEmpty @Column(unique = true)
+//	@Length(min = 11)
+//	private String cpf;
+	@NotNull
+	private Date nascimento;
 	
 	@NotNull @NotEmpty
 	private String genero;
@@ -70,10 +73,6 @@ public class Usuario implements Serializable {
 		
 	}
 
-	public Usuario(Usuario usuario) {
-		
-	}
-
 	public long getId() {
 		return id;
 	}
@@ -98,12 +97,12 @@ public class Usuario implements Serializable {
 		this.sobrenome = sobrenome;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public Date getNascimento() {
+		return nascimento;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setNascimento(Date nascimento) {
+		this.nascimento = nascimento;
 	}
 
 	public String getGenero() {
@@ -179,14 +178,14 @@ public class Usuario implements Serializable {
 	}
 
 	public Usuario(long id, @NotNull @NotEmpty String nome, @NotNull @NotEmpty String sobrenome,
-			@NotNull @NotEmpty @Length(min = 11) String cpf, @NotNull @NotEmpty String genero,
-			@NotNull @NotEmpty String senha, @NotNull @NotEmpty String email, String github, String linkedin,
-			@NotNull boolean mentor, String sobre, List<Experiencia> exp, List<Linguagem> linguagem) {
+			@NotNull Date nascimento, @NotNull @NotEmpty String genero, @NotNull @NotEmpty String senha,
+			@NotNull @NotEmpty String email, String github, String linkedin, @NotNull boolean mentor, String sobre,
+			List<Experiencia> exp, List<Linguagem> linguagem) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
-		this.cpf = cpf;
+		this.nascimento = nascimento;
 		this.genero = genero;
 		this.senha = senha;
 		this.email = email;
@@ -197,6 +196,8 @@ public class Usuario implements Serializable {
 		this.exp = exp;
 		this.linguagem = linguagem;
 	}
+
+	
 	
 	
 	
