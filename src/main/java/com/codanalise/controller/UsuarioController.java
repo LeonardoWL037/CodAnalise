@@ -1,6 +1,7 @@
 package com.codanalise.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +27,14 @@ public class UsuarioController {
 	@GetMapping
 	public List<Usuario> listaUsuarios(){
 		return usu.findAll();
+		
+	}
+	
+	@GetMapping("/{id}")
+	public Optional<Usuario> buscausuario(@PathVariable(value = "id") long id) {
+		
+		
+		return usu.findById(id);
 		
 	}
 	
