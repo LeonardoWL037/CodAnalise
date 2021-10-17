@@ -40,6 +40,7 @@ public class UsuarioController {
 		if(usuario.isPresent()) {
 			
 			return ResponseEntity.ok(usuario.get());
+			
 		}
 		
 		return ResponseEntity.notFound().build();
@@ -64,10 +65,29 @@ public class UsuarioController {
 		return usu.save(usuario);
 	}
 	
+//	@PostMapping
+//	@Transactional
+//	public ResponseEntity<Usuario> salvaUsuario(@RequestBody Usuario usuario) {
+//		try {
+//			usu.save(usuario);
+//			return ResponseEntity.ok(usuario);
+//		}catch (Exception e) {
+//		e.printStackTrace();
+//		System.out.println("Cadastro falhou");
+//		}
+//		return ResponseEntity.badRequest().build();
+//		}
+	
 	
 	@DeleteMapping("/{id}")
-	public void deletaUsuario(@PathVariable(value = "id") long id) {
-		usu.deleteById(id);
+	public ResponseEntity<Usuario> deletaUsuario(@PathVariable(value = "id") long id) {
+		Optional<Usuario> usuario = usu.findById(id);
+		if(usuario.isPresent()) {
+			usu.deleteById(id);
+			return ResponseEntity.ok(usuario.get());
+		}else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 

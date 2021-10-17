@@ -15,8 +15,6 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
-
 import lombok.Data;
 
 @Entity
