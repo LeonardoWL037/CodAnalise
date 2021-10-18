@@ -56,7 +56,7 @@ public class Usuario implements Serializable {
 	
 	private String linkedin;
 	
-	@NotNull
+	@NotNull 
 	private boolean mentor;
 	
 	private String sobre;

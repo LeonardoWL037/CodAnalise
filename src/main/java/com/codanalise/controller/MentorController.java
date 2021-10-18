@@ -27,7 +27,7 @@ public class MentorController {
 	MentorRepository men;
 	
 	@GetMapping
-	public List<Mentor> listaMentor(@RequestBody Mentor mentor){
+	public List<Mentor> listaMentor(){
 		return men.findAll();
 	}
 	
@@ -40,6 +40,22 @@ public class MentorController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	
+	@GetMapping("/consulta/{usuario_id}")
+	public ResponseEntity<Mentor> consultaMentor(@PathVariable Long usuario_id){
+		Optional<Mentor> mentor = men.findByUsuarioId(usuario_id);
+		if(mentor.isPresent()) {
+			return ResponseEntity.ok(mentor.get());
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+			
+	}
+	
+//	@GetMapping("/consulta/{usuario_id}")
+//	public Mentor consultaMentor(@PathVariable Long usuario_id) {
+//		return men.findByUsuarioId(usuario_id);
+//	}
 	
 	
 	@PostMapping
