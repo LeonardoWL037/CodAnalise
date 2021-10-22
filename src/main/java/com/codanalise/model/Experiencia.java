@@ -29,6 +29,8 @@ public class Experiencia implements Serializable {
 	@NotNull
 	private String empresa;
 	
+	@NotNull
+	private String cargo;
 
 //	@Override
 //	public String toString() {
@@ -39,12 +41,13 @@ public class Experiencia implements Serializable {
 		
 	}
 
-	public Experiencia(long id, Date dtini, Date dtfim, String empresa) {
+	public Experiencia(long id, Date dtini, Date dtfim, String empresa, String cargo) {
 		super();
 		this.id = id;
 		this.dtini = dtini;
 		this.dtfim = dtfim;
 		this.empresa = empresa;
+		this.cargo = cargo;
 	}
 
 	public long getId() {
@@ -77,6 +80,14 @@ public class Experiencia implements Serializable {
 
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 	
 	

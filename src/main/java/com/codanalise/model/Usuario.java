@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import lombok.Data;
 
 @Entity
@@ -35,6 +37,7 @@ public class Usuario implements Serializable {
 	@NotNull @NotEmpty
 	private String sobrenome;
 	
+//	@CPF
 //	@NotNull @NotEmpty @Column(unique = true)
 //	@Length(min = 11)
 //	private String cpf;
@@ -66,6 +69,8 @@ public class Usuario implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Linguagem> linguagem = new ArrayList<>();
+	
+	private String status;
 
 	public Usuario() {
 		
@@ -174,11 +179,22 @@ public class Usuario implements Serializable {
 	public void setLinguagem(List<Linguagem> linguagem) {
 		this.linguagem = linguagem;
 	}
+	
+	
+	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public Usuario(long id, @NotNull @NotEmpty String nome, @NotNull @NotEmpty String sobrenome,
 			@NotNull Date nascimento, @NotNull @NotEmpty String genero, @NotNull @NotEmpty String senha,
 			@NotNull @NotEmpty String email, String github, String linkedin, @NotNull boolean mentor, String sobre,
-			List<Experiencia> exp, List<Linguagem> linguagem) {
+			List<Experiencia> exp, List<Linguagem> linguagem , String status) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -193,6 +209,7 @@ public class Usuario implements Serializable {
 		this.sobre = sobre;
 		this.exp = exp;
 		this.linguagem = linguagem;
+		this.status = status;
 	}
 
 	

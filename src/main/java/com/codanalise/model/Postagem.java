@@ -26,4 +26,36 @@ public class Postagem {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Proposta> propostas = new ArrayList<>();
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public LocalDateTime getDatapostagem() {
+		return datapostagem;
+	}
+
+	public void setDatapostagem(LocalDateTime datapostagem) {
+		this.datapostagem = datapostagem;
+	}
+
+	public Usuario getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Usuario autor) {
+		this.autor = autor;
+	}
+
+	public List<Proposta> getPropostas() {
+		return propostas;
+	}
+
+	public void setPropostas(List<Proposta> propostas) {
+		this.propostas = propostas;
+	}
+
 }
