@@ -4,23 +4,22 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.br.CPF;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
+@NoArgsConstructor
+@ToString
+@AllArgsConstructor
 public class Usuario implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -69,152 +68,11 @@ public class Usuario implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Linguagem> linguagem = new ArrayList<>();
-	
+
+	@OneToMany(targetEntity = Escolaridade.class,cascade =CascadeType.ALL , orphanRemoval = true)
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	private List<Escolaridade> escolaridade;
+
 	private String status;
 
-	public Usuario() {
-		
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-
-	public Date getNascimento() {
-		return nascimento;
-	}
-
-	public void setNascimento(Date nascimento) {
-		this.nascimento = nascimento;
-	}
-
-	public String getGenero() {
-		return genero;
-	}
-
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getGithub() {
-		return github;
-	}
-
-	public void setGithub(String github) {
-		this.github = github;
-	}
-
-	public String getLinkedin() {
-		return linkedin;
-	}
-
-	public void setLinkedin(String linkedin) {
-		this.linkedin = linkedin;
-	}
-
-	public boolean isMentor() {
-		return mentor;
-	}
-
-	public void setMentor(boolean mentor) {
-		this.mentor = mentor;
-	}
-
-	public String getSobre() {
-		return sobre;
-	}
-
-	public void setSobre(String sobre) {
-		this.sobre = sobre;
-	}
-
-	public List<Experiencia> getExp() {
-		return exp;
-	}
-
-	public void setExp(List<Experiencia> exp) {
-		this.exp = exp;
-	}
-
-	public List<Linguagem> getLinguagem() {
-		return linguagem;
-	}
-
-	public void setLinguagem(List<Linguagem> linguagem) {
-		this.linguagem = linguagem;
-	}
-	
-	
-	
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public Usuario(long id, @NotNull @NotEmpty String nome, @NotNull @NotEmpty String sobrenome,
-			@NotNull Date nascimento, @NotNull @NotEmpty String genero, @NotNull @NotEmpty String senha,
-			@NotNull @NotEmpty String email, String github, String linkedin, @NotNull boolean mentor, String sobre,
-			List<Experiencia> exp, List<Linguagem> linguagem , String status) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.nascimento = nascimento;
-		this.genero = genero;
-		this.senha = senha;
-		this.email = email;
-		this.github = github;
-		this.linkedin = linkedin;
-		this.mentor = mentor;
-		this.sobre = sobre;
-		this.exp = exp;
-		this.linguagem = linguagem;
-		this.status = status;
-	}
-
-	
-	
-	
-	
-    
 }
