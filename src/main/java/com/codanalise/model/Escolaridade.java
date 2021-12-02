@@ -20,7 +20,7 @@ public class Escolaridade {
 
     private String instituicao;
 
-    private String nível;
+    private String nivel;
 
     private LocalDate dtini;
 
