@@ -23,7 +23,6 @@ public class Experiencia implements Serializable {
 	@NotNull
 	private Date dtini;
 	
-	@NotNull
 	private Date dtfim;
 	
 	@NotNull
