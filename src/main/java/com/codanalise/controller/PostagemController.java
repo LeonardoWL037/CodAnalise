@@ -1,5 +1,6 @@
 package com.codanalise.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +46,7 @@ public class PostagemController {
 	@PostMapping
 	@Transactional
 	public Postagem cadPostagem(@RequestBody Postagem postagem) {
+		postagem.setDatapostagem(LocalDateTime.now());
 		return postagemRepo.save(postagem);
 	}
 	
