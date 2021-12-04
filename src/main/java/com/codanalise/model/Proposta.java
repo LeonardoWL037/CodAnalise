@@ -21,6 +21,9 @@ public class Proposta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
+	@ManyToOne(targetEntity = Mentor.class, cascade = CascadeType.ALL)
+	private Mentor mentor;
 	
 	private double valor;
 	
