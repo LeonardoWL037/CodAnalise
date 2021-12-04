@@ -21,9 +21,11 @@ public class Comentarios  implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = Usuario.class, orphanRemoval = true)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Usuario.class)
     private Usuario autorComent;
 
     @NotNull
     private String comentario;
+
+
 }

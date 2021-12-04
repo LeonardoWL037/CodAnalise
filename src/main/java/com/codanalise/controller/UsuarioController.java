@@ -5,9 +5,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.sql.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codanalise.model.Usuario;
 import com.codanalise.repository.MentorRepository;
 import com.codanalise.repository.UsuarioRepository;
-import com.google.common.reflect.Parameter;
 
 @RestController
 @RequestMapping(value = "/usuario")
@@ -37,6 +34,12 @@ public class UsuarioController {
 	public List<Usuario> listaUsuarios(){
 		return usu.findAll();
 		
+	}
+
+	@GetMapping(value = "/busca/{nome}")
+	public Optional<Usuario> listaPorNome(@PathVariable String nome){
+		return usu.findByNomeLike(nome);
+
 	}
 	
 	@GetMapping("/{id}")
