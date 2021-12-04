@@ -29,6 +29,9 @@ public class Postagem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	@Enumerated(EnumType.STRING)
+	private PostagemEnum estado = PostagemEnum.ABERTO;
+
 //	@JsonFormat(shape=JsonFormat.Shape.STRING,timezone="America/Recife"
 	@JsonFormat(timezone="America/Recife", pattern = "dd/MM/yyyy HH:mm:ss")
 	private LocalDateTime datapostagem = LocalDateTime.now();
@@ -41,6 +44,7 @@ public class Postagem implements Serializable {
 	private List<Proposta> propostas = new ArrayList<>();
 
 	@NotNull
+	@Size(max = 600)
 	private String descricao;
 	private double valor;
 	@OneToMany(targetEntity = TagsLinguagem.class,cascade =CascadeType.ALL , orphanRemoval = true)
@@ -64,5 +68,4 @@ public class Postagem implements Serializable {
 	public void setDatapostagem(LocalDateTime datapostagem) {
 		this.datapostagem = datapostagem;
 	}
-
 }
