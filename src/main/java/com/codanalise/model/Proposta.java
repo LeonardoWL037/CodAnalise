@@ -22,15 +22,15 @@ public class Proposta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@ManyToOne(targetEntity = Mentor.class, cascade = CascadeType.ALL)
-	private Mentor mentor;
-	
+
 	private double valor;
-	
+
 	@NotNull @NotEmpty
-	private String cometário;
+	private String comentario;
 
 	@Enumerated(EnumType.STRING)
 	private PropostaEnum estado;
 
+	@ManyToOne(targetEntity = Mentor.class, cascade = CascadeType.ALL)
+	private Mentor mentor;
 }
