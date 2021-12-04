@@ -14,8 +14,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	
 	Optional<Usuario> findByEmail(String email);
 
-//	@Query("select u from Usuario u where u.nome like Upper (concat(:Nome,'%'))")
-	@Query("select u from Usuario u where u.nome like Upper (:Nome + %)")
+	@Query("select u from Usuario u where u.nome like Upper (concat(:Nome,'%'))")
 	Optional<Usuario> findByNomeLike(@Param("Nome") String Nome);
 
 }
