@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import com.codanalise.conversor.UsuarioConversor;
+import com.codanalise.dto.UsuarioDTO;
+import com.codanalise.dto.UsuarioNomeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,6 +31,8 @@ public class UsuarioController {
 	UsuarioRepository usu;
 	@Autowired
 	MentorRepository mentor;
+	@Autowired
+	UsuarioConversor conv;
 	
 	
 	@GetMapping
@@ -113,5 +118,17 @@ public class UsuarioController {
 	public Usuario atualizaUsuario(@RequestBody Usuario usuario) {
 		return usu.save(usuario);
 	}
-	
+
+
+	@GetMapping(value = "/dto")
+	public List<UsuarioDTO> listarDTO(){
+		List<Usuario> listar = usu.findAll();
+		return conv.usuarioParaDTO(listar);
+	}
+
+	@GetMapping(value = "/nomedto")
+	public List<UsuarioNomeDTO> listarNomeDTO(){
+		List<Usuario> listar = usu.findAll();
+		return conv.usuarioNomeDTOList(listar);
+	}
 }
