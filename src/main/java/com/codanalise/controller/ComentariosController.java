@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +27,7 @@ public class ComentariosController implements Serializable {
 
     @PostMapping
     public Comentarios postarComentario(@RequestBody Comentarios comentario){
-        comentario.setDt_com(LocalDateTime.now());
+        comentario.setDt_com(LocalDateTime.now(ZoneId.of("America/Recife")));
         return comRep.save(comentario);
     }
 

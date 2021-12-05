@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +37,7 @@ public class PropostaController {
 	@PostMapping
 	@Transactional
 	public Proposta lancaProposta(@RequestBody Proposta proposta) {
-		proposta.setDt_prop(LocalDateTime.now());
+		proposta.setDt_prop(LocalDateTime.now(ZoneId.of("America/Recife")));
 	return poprosta.save(proposta);
 	}
 	
