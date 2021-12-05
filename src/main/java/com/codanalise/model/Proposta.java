@@ -22,6 +22,8 @@ public class Proposta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	private Long postagem_id;
+
 
 	private double valor;
 
@@ -31,6 +33,8 @@ public class Proposta {
 	@Enumerated(EnumType.STRING)
 	private PropostaEnum estado;
 
-	@ManyToOne(targetEntity = Mentor.class, cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = Mentor.class, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "mentor_id", referencedColumnName = "id")
 	private Mentor mentor;
+
 }

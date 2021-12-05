@@ -27,5 +27,7 @@ public class Comentarios  implements Serializable {
     @NotNull
     private String comentario;
 
+    private Long postagem_id;
+
 
 }

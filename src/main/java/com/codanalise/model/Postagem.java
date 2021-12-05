@@ -51,6 +51,12 @@ public class Postagem implements Serializable {
 	@JoinColumn(name = "postagem_id", referencedColumnName = "id")
 	private List<TagsLinguagem> tags;
 
+	@OneToMany(targetEntity = Comentarios.class,cascade =CascadeType.ALL , orphanRemoval = true)
+	@JoinColumn(name = "postagem_id", referencedColumnName = "id")
+	private List<Comentarios> comentarios;
+
+
+
 
 
 	public long getId() {
