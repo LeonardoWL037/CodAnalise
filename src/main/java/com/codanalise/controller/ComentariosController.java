@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,7 @@ public class ComentariosController implements Serializable {
 
     @PostMapping
     public Comentarios postarComentario(@RequestBody Comentarios comentario){
+        comentario.setDt_com(LocalDateTime.now());
         return comRep.save(comentario);
     }
 

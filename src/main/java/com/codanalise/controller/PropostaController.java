@@ -1,5 +1,6 @@
 package com.codanalise.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +45,7 @@ public class PropostaController {
 	@PostMapping
 	@Transactional
 	public Proposta lancaProposta(@RequestBody Proposta proposta) {
+		proposta.setDt_prop(LocalDateTime.now());
 	return poprosta.save(proposta);
 	}
 	
