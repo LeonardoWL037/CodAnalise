@@ -1,19 +1,17 @@
 package com.codanalise.model;
 
-import java.io.Serializable;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data

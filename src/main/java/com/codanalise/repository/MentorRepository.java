@@ -1,10 +1,9 @@
 package com.codanalise.repository;
 
-import java.util.Optional;
-
+import com.codanalise.model.Mentor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.codanalise.model.Mentor;
+import java.util.Optional;
 
 public interface MentorRepository extends JpaRepository<Mentor, Long>{
 

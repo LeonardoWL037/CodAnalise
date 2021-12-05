@@ -1,7 +1,6 @@
 package com.codanalise.controller;
 
 import com.codanalise.model.Comentarios;
-import com.codanalise.model.Usuario;
 import com.codanalise.repository.ComentariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
