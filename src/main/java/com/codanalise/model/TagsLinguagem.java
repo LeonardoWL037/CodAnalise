@@ -21,4 +21,6 @@ public class TagsLinguagem {
 
     @NotNull
     private String linguagem;
+
+    private Long postagem_id;
 }
