@@ -1,5 +1,7 @@
 package com.codanalise.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,12 +9,12 @@ public class Mentor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(View.Base.class)
 	private long id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@JsonView(View.Base.class)
 	private Usuario usuario;
-	
-	
 	private boolean ativo;
 
 	

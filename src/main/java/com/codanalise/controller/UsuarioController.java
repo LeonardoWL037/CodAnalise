@@ -4,8 +4,10 @@ import com.codanalise.conversor.UsuarioConversor;
 import com.codanalise.dto.UsuarioDTO;
 import com.codanalise.dto.UsuarioNomeDTO;
 import com.codanalise.model.Usuario;
+import com.codanalise.model.View;
 import com.codanalise.repository.MentorRepository;
 import com.codanalise.repository.UsuarioRepository;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,10 +33,10 @@ public class UsuarioController {
 		return usu.findAll();
 		
 	}
-
+	@JsonView(View.Base.class)
 	@GetMapping(value = "/busca/{nome}")
-	public Optional<Usuario> listaPorNome(@PathVariable String nome){
-		return usu.findByNomeLike(nome);
+	public List<Usuario> listaPorNome(@PathVariable String nome){
+		return usu.findAllByNomeLike(nome);
 
 	}
 	

@@ -23,8 +23,8 @@ public class Proposta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	private Long postagem_id;
 
+	private long postagem_id;
 
 	private double valor;
 

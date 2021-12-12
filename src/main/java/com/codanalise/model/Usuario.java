@@ -1,5 +1,6 @@
 package com.codanalise.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,12 +26,13 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(View.Base.class)
 	private long id;
-	
-	
+
+	@JsonView(View.Base.class)
 	@NotNull @NotEmpty
 	private String nome;
-	
+	@JsonView(View.Base.class)
 	@NotNull @NotEmpty
 	private String sobrenome;
 	
@@ -48,6 +50,7 @@ public class Usuario implements Serializable {
 	private String senha;
 	
 	@NotNull @NotEmpty @Column(unique = true)
+	@JsonView(View.Base.class)
 	private String email;
 	
 	
@@ -73,4 +76,17 @@ public class Usuario implements Serializable {
 
 	private String status;
 
+    @OneToOne(orphanRemoval = true)
+    @JoinTable(name = "usuario_pagamento",
+            joinColumns = @JoinColumn(name = "usuario_null"),
+            inverseJoinColumns = @JoinColumn(name = "pagamento_id"))
+    private Pagamento pagamento;
+
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
+    }
 }
