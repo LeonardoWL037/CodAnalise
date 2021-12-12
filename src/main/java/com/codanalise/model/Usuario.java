@@ -26,13 +26,12 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView(View.Base.class)
+
 	private long id;
 
-	@JsonView(View.Base.class)
+
 	@NotNull @NotEmpty
 	private String nome;
-	@JsonView(View.Base.class)
 	@NotNull @NotEmpty
 	private String sobrenome;
 	
@@ -50,7 +49,7 @@ public class Usuario implements Serializable {
 	private String senha;
 	
 	@NotNull @NotEmpty @Column(unique = true)
-	@JsonView(View.Base.class)
+
 	private String email;
 	
 	

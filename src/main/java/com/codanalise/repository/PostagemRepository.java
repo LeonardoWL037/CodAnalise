@@ -13,8 +13,9 @@ public interface PostagemRepository extends JpaRepository<Postagem, Long>{
     List<Postagem> findPostagemByTagsLinguagem(String tag);
 
 
-    @Query("select p from Postagem p left join p.tags tags where upper(tags.linguagem) like upper(concat(?1, '%')) or Upper(concat(p.autor.nome,' ', p.autor.sobrenome)) like upper(concat(?1, '%'))")
+    @Query("select distinct p from Postagem p left join p.tags tags where upper(tags.linguagem) like upper(concat(?1, '%')) or Upper(concat(p.autor.nome,' ', p.autor.sobrenome)) like upper(concat(?1, '%'))")
     List<Postagem> findPostagemByTagsLinguagemOrAutorNomeContaining(String busca);
+
 
     @Query("select p from Postagem p where p.autor.id = ?1")
     List<Postagem> findPostagemByAutorId(long id);

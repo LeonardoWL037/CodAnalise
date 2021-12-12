@@ -20,7 +20,6 @@ public class PostagemController {
 	PostagemRepository postagemRepo;
 	
 	@GetMapping
-//	@JsonView(View.Base.class)
 	public List<Postagem> listarPosts(){
 		return postagemRepo.findAll();
 	}
