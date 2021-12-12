@@ -76,17 +76,17 @@ public class Usuario implements Serializable {
 
 	private String status;
 
-    @OneToOne(orphanRemoval = true)
-    @JoinTable(name = "usuario_pagamento",
-            joinColumns = @JoinColumn(name = "usuario_null"),
-            inverseJoinColumns = @JoinColumn(name = "pagamento_id"))
-    private Pagamento pagamento;
-
-    public Pagamento getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
-    }
+//    @OneToOne(orphanRemoval = true)
+//    @JoinTable(name = "usuario_pagamento",
+//            joinColumns = @JoinColumn(name = "usuario_null"),
+//            inverseJoinColumns = @JoinColumn(name = "pagamento_id"))
+//    private Pagamento pagamento;
+//
+//    public Pagamento getPagamento() {
+//        return pagamento;
+//    }
+//
+//    public void setPagamento(Pagamento pagamento) {
+//        this.pagamento = pagamento;
+//    }
 }
