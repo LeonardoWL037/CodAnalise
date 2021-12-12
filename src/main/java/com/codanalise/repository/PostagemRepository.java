@@ -11,4 +11,7 @@ public interface PostagemRepository extends JpaRepository<Postagem, Long>{
 
     @Query("select p from Postagem p left join p.tags tags where UPPER(tags.linguagem) = (concat(?1,'%'))")
     List<Postagem> findPostagemByTagsLinguagem(String tag);
+
+    @Query("select p from Postagem p where p.autor.id = ?1")
+    List<Postagem> findPostagemByAutorId(long id);
 }

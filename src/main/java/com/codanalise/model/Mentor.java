@@ -1,63 +1,27 @@
 package com.codanalise.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
+@Data
+@NoArgsConstructor
+@ToString
+@AllArgsConstructor
 public class Mentor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView(View.Base.class)
 	private long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonView(View.Base.class)
 	private Usuario usuario;
 	private boolean ativo;
-
-	
-	public Mentor() {
-		
-	}
-	
-	public Mentor(long id, Usuario usuario, boolean ativo) {
-		super();
-		this.id = id;
-		this.usuario = usuario;
-		this.ativo = ativo;
-	}
-
-
-	public long getId() {
-		return id;
-	}
-
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-
-	public boolean isAtivo() {
-		return ativo;
-	}
-
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-	
 	
 }

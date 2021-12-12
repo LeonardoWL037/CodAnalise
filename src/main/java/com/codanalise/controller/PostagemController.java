@@ -24,6 +24,11 @@ public class PostagemController {
 	public List<Postagem> listarPosts(){
 		return postagemRepo.findAll();
 	}
+
+	@GetMapping("/usuario/{id}")
+	public List<Postagem> listarPorUsuario(@PathVariable Long id){
+		return postagemRepo.findPostagemByAutorId(id);
+	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Postagem> buscarPostagem(@PathVariable Long id){

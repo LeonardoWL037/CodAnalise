@@ -29,6 +29,9 @@ public class UsuarioController {
 	MentorRepository mentor;
 	@Autowired
 	UsuarioConversor conv;
+
+	@Autowired
+	MentorRepository mr;
 	
 	
 	@GetMapping
@@ -113,11 +116,11 @@ public class UsuarioController {
 
 	
 	
-	@PutMapping()
+	@PutMapping
 	@Transactional
 	public Usuario atualizaUsuario(@RequestBody Usuario usuario) {
 		Mentor mentor = new Mentor();
-		if(usuario.isMentor()){
+		if (usuario.isMentor()){
 			mentor.setUsuario(usuario);
 			mentor.setAtivo(true);
 			mc.cadastroMentor(mentor);
@@ -126,6 +129,7 @@ public class UsuarioController {
 
 			return usu.save(usuario);
 		}
+
 	}
 
 

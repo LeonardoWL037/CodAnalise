@@ -52,6 +52,8 @@ public class MentorController {
 	@PostMapping
 	@Transactional
 	public Mentor cadastroMentor (@RequestBody Mentor mentor) {
+		mentor.setAtivo(true);
+
 		return men.save(mentor);
 	}
 	
