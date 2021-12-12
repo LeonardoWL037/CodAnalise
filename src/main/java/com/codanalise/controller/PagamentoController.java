@@ -1,5 +1,6 @@
 package com.codanalise.controller;
 
+import com.codanalise.model.Aula;
 import com.codanalise.model.Pagamento;
 import com.codanalise.model.Usuario;
 import com.codanalise.repository.PagamentoRepository;
@@ -20,6 +21,9 @@ public class PagamentoController {
     @Autowired
     PagamentoRepository pag;
 
+    @Autowired
+    AulaController ac;
+
     @GetMapping
     public List<Pagamento> listarPagamentos(){
         return pag.findAll();
@@ -34,8 +38,13 @@ public class PagamentoController {
 
     @PostMapping
     public Pagamento efetuaPagamento(@RequestBody Pagamento pagamento){
+        Aula aula = new Aula();
         pagamento.setHora(LocalDateTime.now(ZoneId.of("America/Recife")));
+        aula.setPagamento(pagamento);
+        aula.setId_mentor(pagamento.getMentor_pag().getId());
+        aula.setId_usuario(pagamento.getAluno().getId());
+        ac.cadastraAula(aula);
 
         return pag.save(pagamento);
     }
-}
+    }

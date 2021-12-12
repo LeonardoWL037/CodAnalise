@@ -3,6 +3,7 @@ package com.codanalise.controller;
 import com.codanalise.conversor.UsuarioConversor;
 import com.codanalise.dto.UsuarioDTO;
 import com.codanalise.dto.UsuarioNomeDTO;
+import com.codanalise.model.Mentor;
 import com.codanalise.model.Usuario;
 import com.codanalise.model.View;
 import com.codanalise.repository.MentorRepository;
@@ -19,7 +20,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioController {
-	
+
+	@Autowired
+	MentorController mc;
 	@Autowired
 	UsuarioRepository usu;
 	@Autowired
@@ -69,12 +72,16 @@ public class UsuarioController {
 	@PostMapping
 	@Transactional
 	public Usuario salvaUsuario(@RequestBody Usuario usuario) {
-//		usu.save(usuario);
-//		long idmentor = usuario.getId();
-//		if(usuario.isMentor()) {
-//			mentor.save(idmentor);
-//		}
-		return usu.save(usuario);
+		Mentor mentor = new Mentor();
+		if (usuario.isMentor()){
+			mentor.setUsuario(usuario);
+			mentor.setAtivo(true);
+			mc.cadastroMentor(mentor);
+			return usu.save(usuario);
+		}else{
+
+			return usu.save(usuario);
+		}
 		
 	}
 	
@@ -109,7 +116,16 @@ public class UsuarioController {
 	@PutMapping()
 	@Transactional
 	public Usuario atualizaUsuario(@RequestBody Usuario usuario) {
-		return usu.save(usuario);
+		Mentor mentor = new Mentor();
+		if(usuario.isMentor()){
+			mentor.setUsuario(usuario);
+			mentor.setAtivo(true);
+			mc.cadastroMentor(mentor);
+			return usu.save(usuario);
+		}else{
+
+			return usu.save(usuario);
+		}
 	}
 
 
@@ -124,4 +140,6 @@ public class UsuarioController {
 		List<Usuario> listar = usu.findAll();
 		return conv.usuarioNomeDTOList(listar);
 	}
+
+
 }

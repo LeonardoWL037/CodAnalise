@@ -21,7 +21,10 @@ public class Aula {
     private Pagamento pagamento;
 
     @JsonFormat(timezone="America/Recife", pattern = "dd/MM/yyyy HH:mm:ss")
-    private LocalDateTime hora_aula;
+    private LocalDateTime hora;
+
+    private long id_mentor;
+    private long id_usuario;
 
     private boolean conf_mentor;
 

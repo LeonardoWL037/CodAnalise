@@ -21,7 +21,7 @@ public class Pagamento {
     private long id;
 
     @OneToOne(fetch = FetchType.EAGER, targetEntity = Proposta.class, orphanRemoval = true)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "proposta_id")
     private Proposta proposta;
     private String nro_cartao;
 

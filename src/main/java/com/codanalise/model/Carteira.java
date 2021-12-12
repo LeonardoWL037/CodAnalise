@@ -21,5 +21,6 @@ public class Carteira {
     @OneToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
 
+
     private double saldo;
 }
