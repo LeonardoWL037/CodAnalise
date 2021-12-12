@@ -139,10 +139,10 @@ public class UsuarioController {
 		return conv.usuarioParaDTO(listar);
 	}
 
-	@GetMapping(value = "/nomedto")
-	public List<UsuarioNomeDTO> listarNomeDTO(){
-		List<Usuario> listar = usu.findAll();
-		return conv.usuarioNomeDTOList(listar);
+	@GetMapping(value = "/nomeoutag/{texto}")
+	public List<Usuario> listarPorNomeOuTag(@PathVariable String texto){
+
+		return usu.findByNomeOrSobrenomeOrLinguagemFerramentaContaining(texto);
 	}
 
 
