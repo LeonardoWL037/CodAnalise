@@ -29,4 +29,20 @@ public class AulaController {
         aula.setHora((LocalDateTime.now(ZoneId.of("America/Recife"))));
         return ar.save(aula);
     }
+
+    @PutMapping
+    public Aula atualizaAula(@RequestBody Aula aula){
+
+       return ar.save(aula);
+    }
+
+    @GetMapping("/mentor/{id}")
+    public List<Aula> buscaPorMentor(@PathVariable(value = "id") long id){
+        return ar.findAulaById_mentor(id);
+    }
+
+    @GetMapping("/aluno/{id}")
+    public List<Aula> buscaPorAluno(@PathVariable(value = "id") long id){
+        return ar.findAulaById_usuario(id);
+    }
 }

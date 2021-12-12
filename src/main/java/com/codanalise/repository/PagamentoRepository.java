@@ -14,7 +14,11 @@ import java.util.Optional;
 @Repository
 public interface PagamentoRepository extends JpaRepository<Pagamento, Long> {
 
+    @Query("select p from Pagamento p where p.mentor_pag = ?1")
+    List<Pagamento> findPagamentoByMentor_pag(long id);
 
+    @Query("select p from Pagamento p where p.aluno = ?1")
+    List<Pagamento> findPagamentoByAluno(long id);
 //    @Query("select pag from Usuario u, pagamento pag, proposta prop, mentor, postagem  post\n" +
 //            "where pag.proposta_id = prop.id and prop.mentor_id = mentor.id and post.autor_id = u.id and post.id = 2  and prop.postagem_id = post.id")
 //    public List<Pagamento> findPagamentoByUsuario_id();
