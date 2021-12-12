@@ -70,7 +70,7 @@ public class Usuario implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Linguagem> linguagem = new ArrayList<>();
 
-	@OneToMany(targetEntity = Escolaridade.class,cascade =CascadeType.ALL , orphanRemoval = true)
+	@OneToMany(targetEntity = Escolaridade.class,cascade =CascadeType.ALL)
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	private List<Escolaridade> escolaridade;
 

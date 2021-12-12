@@ -29,6 +29,11 @@ public class PostagemController {
 	public List<Postagem> listarPorUsuario(@PathVariable Long id){
 		return postagemRepo.findPostagemByAutorId(id);
 	}
+
+	@GetMapping("/busca/{texto}")
+	public List<Postagem> listaPorTagOuNome(@PathVariable String texto){
+		return postagemRepo.findPostagemByTagsLinguagemOrAutorNomeContaining(texto);
+	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Postagem> buscarPostagem(@PathVariable Long id){
