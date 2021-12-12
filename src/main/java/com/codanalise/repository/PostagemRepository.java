@@ -3,7 +3,6 @@ package com.codanalise.repository;
 import com.codanalise.model.Postagem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import springfox.documentation.service.Tags;
 
 import java.util.List;
 

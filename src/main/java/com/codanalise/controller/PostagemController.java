@@ -1,9 +1,7 @@
 package com.codanalise.controller;
 
 import com.codanalise.model.Postagem;
-import com.codanalise.model.View;
 import com.codanalise.repository.PostagemRepository;
-import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
