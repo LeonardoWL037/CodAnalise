@@ -18,6 +18,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	List<Usuario> findAllByNomeLike(@Param("Nome") String Nome);
 
 
+
+
 	@Query("select distinct u from Usuario u left join u.linguagem linguagem where upper (concat(u.nome,' ',u.sobrenome)) like upper(concat(?1, '%'))  or upper(linguagem.ferramenta) like upper(concat(?1,'%'))")
 	List<Usuario> findByNomeOrSobrenomeOrLinguagemFerramentaContaining(String busca);
 

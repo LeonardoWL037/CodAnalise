@@ -120,7 +120,7 @@ public class UsuarioController {
 	@Transactional
 	public Usuario atualizaUsuario(@RequestBody Usuario usuario) {
 		Mentor mentor = new Mentor();
-		if (usuario.isMentor()){
+		if (usuario.isMentor() && !mr.findByUsuarioId(usuario.getId()).isPresent()){
 			mentor.setUsuario(usuario);
 			mentor.setAtivo(true);
 			mc.cadastroMentor(mentor);
