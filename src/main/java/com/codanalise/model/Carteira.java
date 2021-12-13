@@ -18,9 +18,12 @@ public class Carteira {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Usuario usuario;
+    @Column(unique = true)
+    private long mentor_id;
 
+    @Column(nullable = true)
+    private double saldo_pendente;
 
+    @Column(nullable = true)
     private double saldo;
 }

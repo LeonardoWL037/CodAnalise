@@ -2,7 +2,6 @@ package com.codanalise.controller;
 
 import com.codanalise.conversor.UsuarioConversor;
 import com.codanalise.dto.UsuarioDTO;
-import com.codanalise.dto.UsuarioNomeDTO;
 import com.codanalise.model.Mentor;
 import com.codanalise.model.Usuario;
 import com.codanalise.model.View;
