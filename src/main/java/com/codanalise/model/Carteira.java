@@ -22,8 +22,8 @@ public class Carteira {
     private long mentor_id;
 
     @Column(nullable = true)
-    private double saldo_pendente;
+    private Double saldo_pendente;
 
     @Column(nullable = true)
-    private double saldo;
+    private Double saldo;
 }

@@ -19,7 +19,7 @@ public class Aula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
 //    @MapsId
     private Pagamento pagamento;
 
