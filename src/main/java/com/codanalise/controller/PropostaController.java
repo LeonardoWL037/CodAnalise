@@ -24,7 +24,7 @@ public class PropostaController {
 		return poprosta.findAll();
 	}
 	
-	@GetMapping("/id")
+	@GetMapping("/{id}")
 	public ResponseEntity<Proposta> buscarProposta(@PathVariable Long id){
 		Optional<Proposta> prop = poprosta.findById(id);
 		if (prop.isPresent()) {
@@ -32,6 +32,11 @@ public class PropostaController {
 		}else {
 			return ResponseEntity.notFound().build();
 		}
+	}
+
+	@GetMapping("/busca/{mentor}")
+	public List<Proposta> buscarPropostaMentor(@PathVariable(value = "mentor") long id){
+		return poprosta.findPropostaByMentor(id);
 	}
 	
 	@PostMapping
