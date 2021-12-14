@@ -72,6 +72,9 @@ public class Usuario implements Serializable {
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	private List<Escolaridade> escolaridade;
 
+
+	private String contato;
+
 	private String status;
 
 //    @OneToOne(orphanRemoval = true)
